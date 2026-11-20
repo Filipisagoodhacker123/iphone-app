@@ -45,7 +45,7 @@ export function AssistantChat() {
   };
 
   return (
-    <div className="flex h-dvh flex-col bg-chat-surface text-chat-ink">
+    <div className="app-viewport flex flex-col bg-chat-surface text-chat-ink">
       <header className="shrink-0 bg-chat-header pt-[env(safe-area-inset-top)] text-doc-paper">
         <div className="relative mx-auto flex h-[64px] max-w-[400px] items-center justify-center px-4">
           <Link to="/" aria-label="Πίσω" className="absolute left-3 grid h-10 w-10 place-items-center">
@@ -60,7 +60,7 @@ export function AssistantChat() {
         </div>
       </header>
 
-      <main className="min-h-0 flex-1 overflow-y-auto">
+      <main className="app-scroll min-h-0 flex-1">
         <div className="mx-auto flex max-w-[400px] flex-col gap-3 px-3 pb-6 pt-10" aria-live="polite">
           {messages.map((m) => (
             <p

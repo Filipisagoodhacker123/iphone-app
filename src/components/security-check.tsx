@@ -6,7 +6,7 @@ type Props = { onClose: () => void };
 /** Full-screen, demo-only security check. No biometrics are read; both controls just close it. */
 export function SecurityCheck({ onClose }: Props) {
   return (
-    <div role="dialog" aria-modal="true" aria-labelledby="security-check-title" className="security-bg fixed inset-0 z-50 overflow-y-auto font-condensed text-doc-paper">
+    <div role="dialog" aria-modal="true" aria-labelledby="security-check-title" className="security-bg app-scroll fixed inset-0 z-50 font-condensed text-doc-paper">
       <div className="relative mx-auto flex min-h-full max-w-[400px] flex-col px-4 pb-[calc(env(safe-area-inset-bottom)+28px)] pt-[env(safe-area-inset-top)]">
         <Button
           variant="ghost"

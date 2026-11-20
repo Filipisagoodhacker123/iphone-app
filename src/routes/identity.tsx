@@ -100,10 +100,10 @@ function IdentityDetail() {
   }, [qrOpen, menuOpen, securityOpen]);
 
   return (
-    <div className="navy-bg relative isolate min-h-dvh font-condensed text-foreground">
+    <div className="navy-bg app-viewport isolate font-condensed text-foreground">
       <div aria-hidden="true" className="id-pattern" />
-      <div className="mx-auto max-w-[400px]">
-        <header className="sticky top-0 z-30 bg-doc-blue pt-[env(safe-area-inset-top)]">
+      <div className="mx-auto flex h-full min-h-0 w-full max-w-[400px] flex-col">
+        <header className="z-30 shrink-0 bg-doc-blue pt-[env(safe-area-inset-top)]">
           <div className="flex h-14 items-center justify-between px-2">
             <Button variant="ghost" aria-label="Πίσω" asChild className="grid h-10 w-10 place-items-center p-0 text-doc-paper hover:bg-transparent hover:text-doc-paper">
               <Link to="/"><BackChevron className="h-[20px]! w-[12px]!" /></Link>
@@ -121,6 +121,7 @@ function IdentityDetail() {
           </div>
         </header>
 
+        <main className="document-scroll-bg app-scroll min-h-0 flex-1">
         <section className="relative flex items-start justify-between gap-4 bg-doc-blue px-5 pt-[46px] text-doc-paper">
           <div className="min-w-0 pb-3">
             <p className="text-[15px] font-normal leading-tight text-doc-paper/80">Αριθμός Ταυτότητας:</p>
@@ -175,6 +176,7 @@ function IdentityDetail() {
             <p className="text-[13px] text-doc-paper/60">Not an international travel document</p>
           </div>
         </div>
+        </main>
       </div>
 
       {qrOpen && (

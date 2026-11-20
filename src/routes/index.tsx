@@ -47,9 +47,9 @@ function Index() {
   const demo = (title: string) => setSheet({ title, body: <p className="text-muted-foreground">Οθόνη επίδειξης — δεν υπάρχει περιεχόμενο ακόμη.</p> });
 
   return (
-    <div className="halftone-bg min-h-dvh overflow-x-hidden text-foreground">
-      <div className="mx-auto max-w-[400px] pb-[calc(env(safe-area-inset-bottom)+24px)] pt-[calc(env(safe-area-inset-top)+12px)]">
-        <header className="flex items-center h-12 justify-between px-4">
+    <div className="halftone-bg app-viewport text-foreground">
+      <div className="mx-auto flex h-full min-h-0 w-full max-w-[400px] flex-col pt-[calc(env(safe-area-inset-top)+12px)]">
+        <header className="flex h-12 shrink-0 items-center justify-between px-4">
           <div className="flex items-center gap-2">
             <Button variant="ghost" aria-label="Μενού" onClick={() => setDrawer(true)} className="grid h-8 w-8 place-items-center p-0 [&_svg]:size-6"><Menu className="h-6 w-6" /></Button>
             <span className="text-[24px] font-bold leading-none">gov.<span className="text-primary">gr</span></span>
@@ -63,6 +63,8 @@ function Index() {
           </div>
         </header>
 
+        <main className="app-scroll min-h-0 flex-1">
+          <div className="pb-[calc(env(safe-area-inset-bottom)+24px)]">
         <div ref={ref} onScroll={(e) => { const el = e.currentTarget; const card = el.firstElementChild; if (card) setPage(Math.min(cards.length - 1, Math.round(el.scrollLeft / (card.clientWidth + 16)))); }} className="no-scrollbar mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 [scroll-padding-inline:16px]">
           {cards.map((c, i) => (
             <div key={c.ref} onClick={i === 0 ? () => navigate({ to: "/identity" }) : undefined} className={`relative h-[175px] w-[calc(100%-10px)] shrink-0 snap-start overflow-hidden rounded-xl bg-doc-paper shadow-lg${i === 0 ? " cursor-pointer" : ""}`}>
@@ -112,6 +114,8 @@ function Index() {
           <Button variant="ghost" onClick={() => demo("Πληροφορίες απορρήτου")} className="h-auto p-0 font-normal underline">Πληροφορίες απορρήτου</Button>
           <p>Έκδοση 1.0.0 (demo)</p>
         </footer>
+          </div>
+        </main>
       </div>
 
       <Button variant="ghost" aria-label="Ενέργειες" onClick={() => setSheet({ title: "Ενέργειες", body: <div className="grid grid-cols-3 gap-3">{[[QrCode, "Σάρωση QR"], [ScanLine, "Προσθήκη κάρτας"], [FileText, "Νέο αίτημα"]].map(([I, l]) => { const Ic = I as typeof QrCode; return <Button variant="ghost" key={l as string} className="flex h-auto whitespace-normal flex-col items-center gap-2 rounded-xl border border-border bg-card p-4 text-sm"><Ic className="h-6 w-6 text-primary" />{l as string}</Button>; })}</div> })} className="fab-glow fixed bottom-[calc(env(safe-area-inset-bottom)+clamp(64px,50dvh-298px,128px))] right-[max(28px,calc(50%-200px+28px))] grid h-[60px] w-[60px] place-items-center rounded-full bg-primary p-0 text-primary-foreground hover:bg-primary [&_svg]:size-8">
